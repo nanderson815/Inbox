@@ -28,4 +28,9 @@ describe("Inbox", () => {
     const message = await inbox.methods.message().call();
     assert.strictEqual(message, "Hi there!!");
   });
+  it("can modify the message", async () => {
+    await inbox.methods.setMessage("whats poppin").send({ from: accounts[0] });
+    const message = await inbox.methods.message().call();
+    assert.strictEqual(message, "whats poppin");
+  });
 });
